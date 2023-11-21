@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h2>Gestión Empleados y Usuarios</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarUsuario/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <h5>Rut usuario</h5>
+                        <input type="text" id="Rut" name="Rut" class="form-control" placeholder="Rut usuario" required>
+                        <br>
+                        <h5>Nombre usuario</h5>
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre usuario" required>
+                        <br>
+                        <h5>Apellido usuario</h5>
+                        <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellido usuario" required>
+                        <br>
+                        <h5>Tipo de Usuario</h5>
+                        <select name="tipoDeUsuario" id="tipoDeUsuario">
+                            <option value="null">------</option>
+                            <option value="Paciente">Paciente</option>
+                            <option value="Secretaria">Secretaria</option>
+                            <option value="Medico">Medico</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar usuario</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h2>Listado de Usuarios</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Rut</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Tipo de usuario</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for us in usuariosLista %}
+                        <tr>
+                            <td>{{us.rut}}</td>
+                            <td>{{us.nombre}}</td>
+                            <td>{{us.apellido}}</td>
+                            <td>{{us.tipodeusuario}}</td>
+                            <td><a href="editarUsuario/{{us.rut}}" class="btn btn-info">Editar</a>
+                                <a href="eliminarUsuario/{{us.rut}}" class="btn btn-danger">Eliminar</a>
+                            </td>
+                            
+                        </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="tienda_link_home">
+    <a href="{% url 'home' %}" class="btn btn-info btn-sm">Volver pagina de inicio</a>
+</div>
+{% endblock %}

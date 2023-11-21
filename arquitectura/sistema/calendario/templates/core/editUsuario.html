@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edición de usuario</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarUsuario/" value="{{user.rut}}" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <h5>Rut usuario</h5>
+                        <input type="text" id="Rut" name="Rut" value="{{user.rut}}" class="form-control" placeholder="Rut usuario"  readonly required>
+                        <br>
+                        <h5>Nombre usuario</h5>
+                        <input type="text" id="nombre" name="nombre" value="{{user.nombre}}" class="form-control" placeholder="Nombre usuario" required>
+                        <br>
+                        <h5>Apellido usuario</h5>
+                        <input type="text" id="apellido" name="apellido" value="{{user.apellido}}" class="form-control" placeholder="Apellido usuario" required>
+                        <br>
+                        <h5>Tipo de Usuario</h5>
+                        <select name="tipoDeUsuario" id="tipoDeUsuario" value="{{user.tipodeusuario}}" >
+                            <option value="null">------</option>
+                            <option value="Paciente">Paciente</option>
+                            <option value="Secretaria">Secretaria</option>
+                            <option value="Medico">Medico</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <a href="{% url 'administrador' %}" type="submit" class="btn btn-success btn-block text-white">Guardar usuario</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
