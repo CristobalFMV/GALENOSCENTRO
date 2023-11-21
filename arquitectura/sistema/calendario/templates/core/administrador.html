@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4" id="columGestion">
         <h2>Gestión Empleados y Usuarios</h2>
         <div class="card">
             <div class="card-body">
@@ -34,7 +34,7 @@
         </div>
         
     </div>
-    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8" id="columListado">
         <h2>Listado de Usuarios</h2>
         <div class="table-responsive">
             <table class="table table-striped">
@@ -57,7 +57,6 @@
                             <td><a href="editarUsuario/{{us.rut}}" class="btn btn-info">Editar</a>
                                 <a href="eliminarUsuario/{{us.rut}}" class="btn btn-danger">Eliminar</a>
                             </td>
-                            
                         </tr>
                         {% endfor %}
                 </tbody>
@@ -65,7 +64,13 @@
         </div>
     </div>
 </div>
-<div class="tienda_link_home">
-    <a href="{% url 'home' %}" class="btn btn-info btn-sm">Volver pagina de inicio</a>
-</div>
+<br>
+<div class="row">
+    <div class="col" id="botonInicio">
+        <div class="tienda_link_home">
+            <a href="{% url 'home' %}" class="btn btn-info btn-sm">Volver pagina de inicio</a>
+        </div>
+    </div>
+</div>    
+<br>
 {% endblock %}

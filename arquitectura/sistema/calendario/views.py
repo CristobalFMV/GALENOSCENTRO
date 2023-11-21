@@ -46,4 +46,24 @@ def secretaria(request):
 
 def paciente(request):
     return render(request,"core/paciente.html")
+
+
+def crearUsuario(request):
+    if request.method == 'POST':
+        rut = request.POST['Rut']
+        nombre = request.POST['nombre']
+        apellido = request.POST['apellido']
+        # Establece el tipo de usuario predeterminado como "Paciente"
+        tipo_de_usuario = 'Paciente'
+        
+        # Crea el nuevo usuario
+        nuevo_usuario = Usuario(
+            rut=rut,
+            nombre=nombre,
+            apellido=apellido,
+            tipodeusuario=tipo_de_usuario
+        )
+        nuevo_usuario.save()
+        return redirect('/administrador')
+    return render(request, 'core/paciente.html')
     
