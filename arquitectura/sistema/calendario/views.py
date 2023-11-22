@@ -47,6 +47,9 @@ def secretaria(request):
 def paciente(request):
     return render(request,"core/paciente.html")
 
+def agendarhora(request):
+    return render(request,"core/agendarhora.html")
+
 
 def crearUsuario(request):
     if request.method == 'POST':
@@ -64,6 +67,18 @@ def crearUsuario(request):
             tipodeusuario=tipo_de_usuario
         )
         nuevo_usuario.save()
-        return redirect('/administrador')
+        return redirect('/agendarhora')
     return render(request, 'core/paciente.html')
+
+def editUsuario(request):
+    rut=request.POST['Rut']
+    nombre = request.POST['nombre']
+    apellido = request.POST['apellido']
+    tipodeusuario=request.POST['tipoDeUsuario']
+    user=get_object_or_404(Usuario,rut=rut)
+    user.nombre = nombre
+    user.apellido=apellido
+    user.tipodeusuario=['paciente', 'medico']
+    user.save()
+    return redirect('/administrador')
     

@@ -18,3 +18,18 @@ body {
 .botonInicio{
     padding: 20px;
 }
+.card1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Your card styles go here */
+  }
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: #ff0000;
+}

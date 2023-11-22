@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container col-md-6">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Paso 1: Seleccione una opción</h5>
+          <a href="{% url 'calendario' %}" class="btn btn-primary">Agendar Hora</a>
+          <br>
+          <a href="{% url 'calendario' %}" class="btn btn-primary">Anular hora</a>
+        </div>
+      </div>
+</div>
+{% endblock %}
